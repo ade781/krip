@@ -59,7 +59,7 @@ def decrypt_text(encrypted_text, key):
 
         return rc4_decrypted
     except ValueError:
-        raise ValueError("Key harus berupa angka!")
+        raise ValueError("Key tidak valid")
     except Exception as e:
         raise Exception(f"Terjadi kesalahan saat dekripsi: {e}")
 
