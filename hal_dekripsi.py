@@ -3,8 +3,6 @@ import binascii
 from db_connection import connect_db
 
 # Fungsi RC4 dekripsi
-
-
 def rc4_decrypt(text, key):
     # Inisialisasi array S
     S = list(range(256))
@@ -30,7 +28,7 @@ def rc4_decrypt(text, key):
         decrypted.append(k ^ byte)
 
     # Konversi hasil ke string
-    return bytes(decrypted).decode('utf-8')
+    return bytes(decrypted).decode('utf-8', errors='ignore')  # Ignore errors if decoding fails
 
 
 # Fungsi Caesar Cipher dekripsi
@@ -51,14 +49,19 @@ def caesar_decrypt(text, shift):
 
 # Fungsi untuk mengambil data dari database dan mendekripsi teks
 def decrypt_text(encrypted_text, key):
-    # Pertama, dekripsi menggunakan Caesar Cipher
-    caesar_shift = int(key)
-    caesar_decrypted = caesar_decrypt(encrypted_text, caesar_shift)
+    try:
+        # Pertama, dekripsi menggunakan Caesar Cipher
+        caesar_shift = int(key)
+        caesar_decrypted = caesar_decrypt(encrypted_text, caesar_shift)
 
-    # Kedua, dekripsi hasil Caesar menggunakan RC4
-    rc4_decrypted = rc4_decrypt(caesar_decrypted, key)
+        # Kedua, dekripsi hasil Caesar menggunakan RC4
+        rc4_decrypted = rc4_decrypt(caesar_decrypted, key)
 
-    return rc4_decrypted
+        return rc4_decrypted
+    except ValueError:
+        raise ValueError("Key harus berupa angka!")
+    except Exception as e:
+        raise Exception(f"Terjadi kesalahan saat dekripsi: {e}")
 
 
 # Form input untuk dekripsi
@@ -80,10 +83,15 @@ def decryption_form():
 
     if st.button("Dekripsi"):
         if encrypted_text and key:
-            # Dekripsi teks menggunakan metode Super Enkripsi (RC4 + Caesar)
-            decrypted_text = decrypt_text(encrypted_text, key)
-            st.success("Dekripsi berhasil!")
-            st.write(f"**Hasil Dekripsi:** {decrypted_text}")
+            try:
+                # Dekripsi teks menggunakan metode Super Enkripsi (RC4 + Caesar)
+                decrypted_text = decrypt_text(encrypted_text, key)
+                st.success("Dekripsi berhasil!")
+                st.write(f"**Hasil Dekripsi:** {decrypted_text}")
+            except ValueError as ve:
+                st.error(str(ve))  # Menampilkan pesan kesalahan jika key tidak valid
+            except Exception as e:
+                st.error(f"Error: {e}")  # Menangani error lain (misalnya kesalahan dalam proses dekripsi)
         else:
             if not encrypted_text:
                 st.error("Teks yang sudah dienkripsi tidak boleh kosong!")
