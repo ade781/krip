@@ -9,4 +9,5 @@ def connect_db():
         user="root",
         password="",
         database="kripto",
+        port=3306
     )
