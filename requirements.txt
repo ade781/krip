@@ -5,3 +5,4 @@ numpy
 pillow
 bitarray
 bcrypt
+pycryptodome
