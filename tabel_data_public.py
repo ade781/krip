@@ -5,7 +5,7 @@ from db_connection import connect_db
 
 
 def main():
-    st.title("Data Tabel Pengguna (Hanya ID, Isi, Nama Operasi)")
+    st.title("Data Operasi")
 
     # Add custom CSS for table styling
     st.markdown("""
