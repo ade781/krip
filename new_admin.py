@@ -4,7 +4,7 @@ from db_connection import connect_db
 
 
 def main():
-    st.title("Daftar Pengguna Baru (Admin)")
+    st.title("Daftar Komandan Baru (Admin)")
 
     # Deskripsi tentang pentingnya pemilihan admin
     st.markdown("""
