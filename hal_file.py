@@ -72,12 +72,12 @@ def main():
 
                         # Tombol download untuk file terenkripsi
                         with open(encrypted_file_name, "rb") as f:
-                            file_data = f.read()  # Membaca file biner untuk di-download
+                            file_data = f.read()
                             st.download_button(
                                 label="Download File Terenkripsi",
                                 data=file_data,
                                 file_name=encrypted_file_name,
-                                mime="application/octet-stream"  # MIME type untuk file biner
+                                mime="application/octet-stream" 
                             )
                     except ValueError as e:
                         st.error(f"Error: {e}")
@@ -85,7 +85,6 @@ def main():
                     st.error("Masukkan Key terlebih dahulu untuk enkripsi!")
 
     elif option == "Dekripsi File":
-        # Pilih file terenkripsi (.bin)
         file = st.file_uploader("Pilih File yang Terenkripsi", type=[
                                 "bin", "pdf", "txt", "csv", "docx", "zip", "jpg"])
 
@@ -104,8 +103,7 @@ def main():
                         # Mendapatkan nama file asli
                         original_file_name = file.name.replace(".bin", "")
 
-                        # Tentukan MIME type sesuai dengan jenis file yang didekripsi
-                        mime_type = "application/octet-stream"  # Default jika tidak tahu ekstensi file
+                        mime_type = "application/octet-stream" 
                         if original_file_name.endswith(".pdf"):
                             mime_type = "application/pdf"
                         elif original_file_name.endswith(".txt"):
@@ -128,14 +126,13 @@ def main():
                         st.success(
                             f"File berhasil didekripsi menjadi {decrypted_file_name}!")
 
-                        # Tombol download untuk file terdekripsi
                         with open(decrypted_file_name, "rb") as f:
                             file_data = f.read()  # Membaca file biner untuk di-download
                             st.download_button(
                                 label="Download File Terdekripsi",
                                 data=file_data,
                                 file_name=decrypted_file_name,
-                                mime=mime_type  # MIME type yang sesuai
+                                mime=mime_type 
                             )
                     except ValueError as e:
                         st.error(f"Error: {e}")
