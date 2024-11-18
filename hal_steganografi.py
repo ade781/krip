@@ -4,7 +4,6 @@ import io
 
 
 def encode_image(image_path, message, output_path):
-    # Validasi panjang pesan
     if len(message) > 50:
         raise ValueError("Pesan terlalu panjang! Maksimal 50 karakter.")
 
@@ -38,8 +37,8 @@ def decode_image(image_path):
     width, height = img.size
 
     binary_message = ""
-    max_chars = 50  # Maksimal 50 karakter
-    max_bits = max_chars * 8 + 16  # 8 bits per karakter + 16 bits penanda
+    max_chars = 50  
+    max_bits = max_chars * 8 + 16  
     bits_found = 0
 
     for y in range(height):
@@ -83,7 +82,6 @@ def main():
         message = st.text_area("Pesan yang ingin disembunyikan")
 
         if uploaded_image and message:
-            # Validasi panjang pesan
             if len(message) > 50:
                 st.error("Pesan terlalu panjang! Maksimal 50 karakter.")
                 st.info(f"Panjang pesan saat ini: {len(message)} karakter")
