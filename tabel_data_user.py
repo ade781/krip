@@ -63,8 +63,8 @@ def main():
     col_widths = {
         'Nomor': '10%',
         'ID': '10%',
-        'Username': '40%',
-        'Password': '40%'  # Kolom Password menggunakan lebih banyak lebar
+        'Username': '25%',
+        'Password': '55%'  # Kolom Password menggunakan lebih banyak lebar
     }
 
     # Create the HTML table with custom column widths
