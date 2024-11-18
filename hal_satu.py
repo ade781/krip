@@ -99,8 +99,8 @@ def main():
     menu_options = {
         "Enkripsi": "🔐 Enkripsi Kode Peluncuran",
         "Dekripsi": "🔓 Dekripsi Pesan Rahasia",
-        "Tabel": "📊 Matrix Kode Orbital",
-        "Tabel data public": "📊 Matrix Kode Orbital",
+        "Tabel Data": "📊 Matrix Kode Orbital",
+        "Tabel Data Operasi": "📊 Matrix Kode Orbital",
         "Steganografi": "🎯 Kamuflase Data Sensitif",
         "Enkripsi File": "📂 Enkripsi Dokumen Klasifikasi",
         "logout": "🚪 Akhiri Sesi"
