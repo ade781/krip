@@ -184,7 +184,7 @@ def main():
                 <p>TERHUBUNG</p>
             </div>
             <div class="status-item">
-                <h4>🔐 Enkripsi Quantum</h4>
+                <h4>🔐 Super Enkripsi </h4>
                 <p>AKTIF</p>
             </div>
         </div>
