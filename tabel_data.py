@@ -105,9 +105,9 @@ def main():
             'ID': '7%',
             'ID_User': '8%',
             'Username': '15%',
-            'Isi': '40%',
+            'Isi': '45%',
             'Key': '10%',
-            'Nama Operasi': '20%'  # Kolom Nama Operasi
+            'Nama Operasi': '15%'  # Kolom Nama Operasi
         }
 
         # Create the HTML table with custom column widths
