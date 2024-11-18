@@ -23,7 +23,6 @@ def login_page():
         conn = connect_db()
         cursor = conn.cursor()
 
-        # Cari user berdasarkan username
         cursor.execute("SELECT * FROM user WHERE username = %s", (username,))
         user = cursor.fetchone()
 
@@ -38,7 +37,6 @@ def login_page():
                     st.session_state.user_id = user[0]
                     st.session_state.is_authenticated = True
                     st.session_state.user_type = 'user'
-                    # Menyimpan username di session_state
                     st.session_state.username = user[1]
                     st.session_state.is_registering = False
                     st.rerun()
