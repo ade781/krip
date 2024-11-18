@@ -6,7 +6,6 @@ from db_connection import connect_db
 def create_user():
     st.title("Daftar Pengguna Baru")
 
-    # Input untuk username, password dan konfirmasi password
     username = st.text_input("Username", key="new_username_input")
     password = st.text_input(
         "Password", type="password", key="new_password_input")
@@ -16,14 +15,11 @@ def create_user():
     if st.button("Daftar", key="submit_register"):
         if password == password_confirm:
             try:
-                # Hash password dengan bcrypt
                 salt = bcrypt.gensalt()
                 hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
 
-                # Ubah hash menjadi string
                 hashed_password_str = hashed_password.decode('utf-8')
 
-                # Simpan ke database
                 conn = connect_db()
                 cursor = conn.cursor()
                 cursor.execute(
@@ -39,7 +35,6 @@ def create_user():
         else:
             st.error("Password dan konfirmasi password tidak cocok.")
 
-    # Tombol untuk kembali ke halaman login
     if st.button("Kembali ke Halaman Login", key="back_to_login"):
         st.session_state.is_registering = False
         st.session_state.page = "login"
