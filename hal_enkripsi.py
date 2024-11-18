@@ -15,7 +15,7 @@ def rc4_encrypt(text, key):
         j = (j + S[i] + ord(key[i % len(key)])) % 256
         S[i], S[j] = S[j], S[i]
 
-    # PRGA (Pseudo-Random Generation Algorithm)
+    # PRGA 
     cipher = []
     i = j = 0
 
@@ -53,28 +53,21 @@ def caesar_encrypt(text, shift):
 def save_text(user_id, encrypted_text, key, nama_operasi):
     conn = connect_db()
     cursor = conn.cursor()
-    # Menyimpan nama_operasi bersama dengan teks terenkripsi dan kunci
     cursor.execute("INSERT INTO text (user, isi, kunci, nama_operasi) VALUES (%s, %s, %s, %s)",
                    (user_id, encrypted_text, key, nama_operasi))
     conn.commit()
     conn.close()
 
 
-# Form input untuk enkripsi
 def encryption_form():
     st.subheader("Form Enkripsi")
     nama_operasi = st.text_input(
         "Masukkan Nama Operasi peluncuran roket", key="nama_operasi_input")
-    # Input teks untuk enkripsi
     input_text = st.text_area(
         "kode yang akan dienkripsi:", key="input_text_key")
 
-    # Input key dari user untuk enkripsi
     key = st.text_input("Masukkan Key untuk enkripsi:", key="key_input_key")
 
-    # Input nama_operasi
-
-    # Validasi input key untuk memastikan hanya angka
     if key and not key.isdigit():
         st.error("Key hanya boleh berupa angka!")
         return
@@ -90,10 +83,9 @@ def encryption_form():
             # Pertama, enkripsi menggunakan RC4
             rc4_encrypted = rc4_encrypt(input_text, key)
             # Kedua, enkripsi hasil RC4 menggunakan Caesar Cipher
-            # Menggunakan nilai key sebagai shift Caesar
             caesar_shift = int(key)
             caesar_encrypted = caesar_encrypt(rc4_encrypted, caesar_shift)
-
+            
             # Simpan hasil super enkripsi (RC4 + Caesar) ke database
             save_text(st.session_state.user_id,
                       caesar_encrypted, key, nama_operasi)
@@ -109,11 +101,9 @@ def encryption_form():
                 st.error("Nama Operasi tidak boleh kosong!")
 
 
-# Halaman utama
 def main():
     st.title("Enkripsi RC4 + Caesar (Super Enkripsi)")
 
-    # Cek login
     if 'is_authenticated' not in st.session_state or not st.session_state.is_authenticated:
         st.error("Silakan login terlebih dahulu!")
         return
