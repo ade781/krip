@@ -130,14 +130,12 @@ def apply_custom_styles():
 def main():
     apply_custom_styles()
 
-    # Access Level Indicator
     st.markdown("""
         <div class="access-level">
             LEVEL OMEGA • AKSES TERTINGGI
         </div>
     """, unsafe_allow_html=True)
 
-    # Command Center Header
     st.markdown(f"""
         <div class="command-center">
             <div class="security-badge">
@@ -155,7 +153,6 @@ def main():
         </div>
     """, unsafe_allow_html=True)
 
-    # Menu Options with Enhanced Security Descriptions
     menu_options = {
         "data": "🔐 Database Peluncuran Terenkripsi",
         "data pengguna": "👤 Manajemen Personel Rahasia",
@@ -167,7 +164,6 @@ def main():
         "logout": "🚪 Terminasi Sesi Keamanan"
     }
 
-    # Enhanced Sidebar
     st.sidebar.markdown("""
         <div style='background: rgba(100, 255, 218, 0.1); padding: 1rem; border-radius: 10px; border: 1px solid #64ffda;'>
             <h3>🎯 PUSAT KENDALI OMEGA</h3>
@@ -178,7 +174,6 @@ def main():
     selected_menu = st.sidebar.selectbox(
         "Terminal Navigasi", list(menu_options.keys()))
 
-    # Status Grid
     st.markdown("""
         <div class="status-grid">
             <div class="status-item">
@@ -202,7 +197,6 @@ def main():
         </div>
     """, unsafe_allow_html=True)
 
-    # Menu Routing with Security Checks
     if selected_menu == "data":
         st.markdown(
             '<div class="warning-banner">⚠️ Mengakses database terenkripsi...</div>', unsafe_allow_html=True)
@@ -238,7 +232,6 @@ def main():
         st.session_state.user_id = ""
         st.rerun()
 
-    # Enhanced Footer
     st.sidebar.markdown("---")
     st.sidebar.markdown("""
         <div style='text-align: center; padding: 1rem; background: rgba(100, 255, 218, 0.1); border-radius: 10px; border: 1px solid #64ffda;'>
