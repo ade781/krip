@@ -63,8 +63,8 @@ def main():
     col_widths = {
         'Nomor': '10%',
         'ID': '10%',
-        'Isi Pesan': '55%',
-        'Nama Operasi': '25%'
+        'Isi Pesan': '60%',
+        'Nama Operasi': '20%'
     }
 
     # Create the HTML table with custom column widths
