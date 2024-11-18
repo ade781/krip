@@ -46,12 +46,9 @@ def from_hex(hex_str):
     return binascii.unhexlify(hex_str).decode()
 
 
-# Contoh penggunaan
 if __name__ == "__main__":
-    # Enkripsi XOR sederhana
     xor_en("Hello World", 'k')
 
-    # RC4
     plaintext = "Hello RC4"
     key = "secret"
     encrypted = rc4(plaintext, key)
@@ -60,10 +57,8 @@ if __name__ == "__main__":
     decrypted = rc4(encrypted, key)
     print("Decrypted:", decrypted)
 
-    # Konversi ke heksadesimal
     hex_str = to_hex("Hello Hex")
     print("Hex:", hex_str)
 
-    # Konversi dari heksadesimal
     original_str = from_hex(hex_str)
     print("Original:", original_str)
