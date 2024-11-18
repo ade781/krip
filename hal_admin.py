@@ -3,6 +3,9 @@ import tabel_data
 import tabel_data_user
 import hal_dekripsi
 import new_admin
+import tabel_data_admin
+import hal_steganografi
+import hal_file
 
 
 def apply_custom_styles():
@@ -156,7 +159,10 @@ def main():
     menu_options = {
         "data": "🔐 Database Peluncuran Terenkripsi",
         "data pengguna": "👤 Manajemen Personel Rahasia",
+        "data komando": "👤 Data Komando Tertinggi",
         "dekripsi": "🔓 Dekripsi Protokol Level-Omega",
+        "steganografi": "🔓 Steganografi",
+        "enkripsi file": "🔓 Enkripsi File",
         "tambah admin": "⚡ Registrasi Komandan Baru [OMEGA CLEARANCE]",
         "logout": "🚪 Terminasi Sesi Keamanan"
     }
@@ -184,7 +190,7 @@ def main():
                 <p>TERHUBUNG</p>
             </div>
             <div class="status-item">
-                <h4>🔐 Super Enkripsi </h4>
+                <h4>🔐 Enkripsi Quantum</h4>
                 <p>AKTIF</p>
             </div>
         </div>
@@ -205,10 +211,22 @@ def main():
         st.markdown(
             '<div class="warning-banner">⚠️ Membuka arsip personel rahasia...</div>', unsafe_allow_html=True)
         tabel_data_user.main()
+    elif selected_menu == "data komando":
+        st.markdown(
+            '<div class="warning-banner">⚠️ Membuka arsip personel rahasia...</div>', unsafe_allow_html=True)
+        tabel_data_admin.main()
     elif selected_menu == "dekripsi":
         st.markdown(
             '<div class="warning-banner">⚠️ Memulai protokol dekripsi level Omega...</div>', unsafe_allow_html=True)
         hal_dekripsi.main()
+    elif selected_menu == "steganografi":
+        st.markdown(
+            '<div class="warning-banner">⚠️ Memulai protokol dekripsi level Omega...</div>', unsafe_allow_html=True)
+        hal_steganografi.main()
+    elif selected_menu == "enkripsi file":
+        st.markdown(
+            '<div class="warning-banner">⚠️ Memulai protokol dekripsi level Omega...</div>', unsafe_allow_html=True)
+        hal_file.main()
     elif selected_menu == "tambah admin":
         st.markdown(
             '<div class="warning-banner">⚠️ Mengakses sistem registrasi komandan...</div>', unsafe_allow_html=True)
