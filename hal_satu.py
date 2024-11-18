@@ -119,9 +119,9 @@ def main():
         hal_enkripsi.main()
     elif selected_menu == "Dekripsi":
         hal_dekripsi.main()
-    elif selected_menu == "Tabel":
+    elif selected_menu == "Tabel Data":
         tabel.main()
-    elif selected_menu == "Tabel data public":
+    elif selected_menu == "Tabel Data Operasi":
         tabel_data_public.main()
     elif selected_menu == "Steganografi":
         hal_steganografi.main()
