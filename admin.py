@@ -8,7 +8,7 @@ from db_connection import connect_db
 def admin_login():
     if 'is_authenticated' in st.session_state and st.session_state.is_authenticated:
         if st.session_state.user_type == 'admin':
-            hal_admin_main()  # Redirect ke halaman admin
+            hal_admin_main()  
         return
 
     st.title("Login Admin")
@@ -34,7 +34,7 @@ def admin_login():
                     st.session_state.is_authenticated = True
                     st.session_state.user_type = 'admin'
                     st.session_state.username = admin[1]
-                    st.rerun()  # Akan me-reload page dan mengarahkan ke hal_admin_main()
+                    st.rerun()  
                 else:
                     st.error("Password salah!")
             except Exception as e:
