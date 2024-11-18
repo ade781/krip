@@ -101,11 +101,11 @@ def main():
 
         # Define custom column widths
         col_widths = {
-            'Nomor': '10%',
-            'ID': '10%',
-            'ID_User': '11%',
-            'Username': '18%',
-            'Isi': '30%',
+            'Nomor': '7%',
+            'ID': '7%',
+            'ID_User': '8%',
+            'Username': '15%',
+            'Isi': '40%',
             'Key': '10%',
             'Nama Operasi': '20%'  # Kolom Nama Operasi
         }
