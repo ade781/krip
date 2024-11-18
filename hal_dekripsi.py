@@ -35,14 +35,13 @@ def rc4_decrypt(text, key):
 def caesar_decrypt(text, shift):
     result = ""
 
-    # Perulangan untuk setiap karakter dalam teks
     for char in text:
         if char.isalpha():
             # Mengecek apakah huruf besar atau kecil
             shift_base = 65 if char.isupper() else 97
             result += chr((ord(char) - shift_base - shift) % 26 + shift_base)
         else:
-            result += char  # Mengabaikan karakter selain huruf
+            result += char 
 
     return result
 
@@ -50,11 +49,8 @@ def caesar_decrypt(text, shift):
 # Fungsi untuk mengambil data dari database dan mendekripsi teks
 def decrypt_text(encrypted_text, key):
     try:
-        # Pertama, dekripsi menggunakan Caesar Cipher
         caesar_shift = int(key)
         caesar_decrypted = caesar_decrypt(encrypted_text, caesar_shift)
-
-        # Kedua, dekripsi hasil Caesar menggunakan RC4
         rc4_decrypted = rc4_decrypt(caesar_decrypted, key)
 
         return rc4_decrypted
@@ -64,19 +60,15 @@ def decrypt_text(encrypted_text, key):
         raise Exception(f"Terjadi kesalahan saat dekripsi: {e}")
 
 
-# Form input untuk dekripsi
 def decryption_form():
     st.subheader("Form Dekripsi")
 
-    # Input teks yang telah dienkripsi
     encrypted_text = st.text_area(
         "Teks yang telah dienkripsi:", key="input_encrypted_text_key")
 
-    # Input key dari user untuk dekripsi
     key = st.text_input("Masukkan Key untuk dekripsi:",
                         key="key_input_decrypt_key")
 
-    # Validasi input key untuk memastikan hanya angka
     if key and not key.isdigit():
         st.error("Key hanya boleh berupa angka!")
         return
@@ -99,11 +91,9 @@ def decryption_form():
                 st.error("Key tidak boleh kosong!")
 
 
-# Halaman utama untuk dekripsi
 def main():
     st.title("Dekripsi RC4 + Caesar (Super Enkripsi)")
 
-    # Cek login
     if 'is_authenticated' not in st.session_state or not st.session_state.is_authenticated:
         st.error("Silakan login terlebih dahulu!")
         return
