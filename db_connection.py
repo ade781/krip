@@ -6,6 +6,5 @@ def connect_db():
         host="sql205.infinityfree.com",
         user="if0_37801178",
         password="DVMQw2JvhNFWi",
-        database="if0_37801178_kripto",
-        port=3306
+        database="if0_37801178_kripto"
     )
