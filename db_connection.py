@@ -3,9 +3,9 @@ import mysql.connector
 
 def connect_db():
     return mysql.connector.connect(
-        host="sql205.infinityfree.com",
-        user="if0_37801178",
-        password="DVMQw2JvhNFWi",
-        database="if0_37801178_kripto",
+        host="6xdib.h.filess.io",
+        user="kripto_beingever",
+        password="a3badf670f3e69c9fe35d6e9688eeeccc6d0b8b5",
+        database="kripto_beingever",
         port=3307
     )
