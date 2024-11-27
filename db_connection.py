@@ -3,7 +3,7 @@ import mysql.connector
 
 def connect_db():
     return mysql.connector.connect(
-        host="sql205.infinityfree.com",
+        host="sql205.byetcluster.com",
         user="if0_37801178",
         password="DVMQw2JvhNFWi",
         database="if0_37801178_kripto",
